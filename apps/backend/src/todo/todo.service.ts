@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-call */
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
@@ -14,6 +15,7 @@ export class TodoService {
     const data = await this.todoModel.find();
     const result: Todo[] = data.map((item) => ({
       _id: item._id?.toString(),
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       id: item.id ?? item._id?.toString(),
       title: item.title,
       description: item.description,
@@ -25,6 +27,7 @@ export class TodoService {
     const data = await this.todoModel.create(input);
     const result = {
       _id: data?._id.toString(),
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
       id: data?.id.toString(),
       title: data.title,
       description: data.description,
@@ -33,6 +36,7 @@ export class TodoService {
   }
 
   async updateTodo(input): Promise<Todo | string> {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const { _id, id, title, description } = input;
 
     try {
@@ -46,6 +50,7 @@ export class TodoService {
 
       const result: Todo = {
         _id: data._id.toString(),
+        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         id: data.id ?? data._id.toString(),
         title: data.title || '',
         description: data.description || '',
