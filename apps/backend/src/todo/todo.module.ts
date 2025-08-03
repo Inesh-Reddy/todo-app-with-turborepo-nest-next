@@ -4,6 +4,7 @@ import { TodoService } from './todo.service';
 import { DbModule } from 'src/db/db.module';
 
 @Module({
+  exports: [],
   imports: [DbModule],
   providers: [TodoRouter, TodoService],
 })

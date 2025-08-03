@@ -41,6 +41,10 @@ const appRouter = t.router({
       description: z.string(),
     })).mutation(async () => "PLACEHOLDER_DO_NOT_REMOVE" as any),
     deleteTodo: publicProcedure.input(z.string()).output(z.string()).mutation(async () => "PLACEHOLDER_DO_NOT_REMOVE" as any)
+  }),
+  prismatodo: t.router({
+    getPTodos: publicProcedure.output(z.array(TodoZodSchema)).query(async () => "PLACEHOLDER_DO_NOT_REMOVE" as any),
+    createPTodo: publicProcedure.input(TodoZodSchema).output(TodoZodSchema).mutation(async () => "PLACEHOLDER_DO_NOT_REMOVE" as any)
   })
 });
 export type AppRouter = typeof appRouter;

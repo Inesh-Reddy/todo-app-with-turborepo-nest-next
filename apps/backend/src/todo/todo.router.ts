@@ -6,7 +6,10 @@ import { z } from 'zod';
 
 @Router({ alias: 'todo' })
 export class TodoRouter {
-  constructor(@Inject(TodoService) private todoService: TodoService) {}
+  constructor(
+    @Inject(TodoService)
+    private todoService: TodoService,
+  ) {}
 
   @Query({
     output: z.array(TodoZodSchema),
